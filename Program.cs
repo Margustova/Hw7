@@ -84,6 +84,8 @@ int SummDiagonal2dArray(int[,]array)
 {
     int sum =0;
     for(int i = 0; i < array.GetLength(0); i++)
+    // for(int i =0; i < array.Getlength(0) && i < array.Getlength(1); i++ ) -более быстрое и легкое решение
+    //      sum = array[i, i]; 
     {
         for(int j = 0; j < array.GetLength(1); j++)
         {
