@@ -22,17 +22,17 @@ void Show2dArray(int[,] array) //вызов двумерного массива
     Console.WriteLine(); // что бы 2 массива не сливались
 }
 
-Console.Write("Input a number of rows: ");
-int m = Convert.ToInt32(Console.ReadLine());
-Console.Write("Input a number of columns: ");
-int n = Convert.ToInt32(Console.ReadLine());
-Console.Write("Input a minValue: ");
-int min = Convert.ToInt32(Console.ReadLine());
-Console.Write("Input a number of maxValue: ");
-int max = Convert.ToInt32(Console.ReadLine());
+// Console.Write("Input a number of rows: ");
+// int m = Convert.ToInt32(Console.ReadLine());
+// Console.Write("Input a number of columns: ");
+// int n = Convert.ToInt32(Console.ReadLine());
+// Console.Write("Input a minValue: ");
+// int min = Convert.ToInt32(Console.ReadLine());
+// Console.Write("Input a number of maxValue: ");
+// int max = Convert.ToInt32(Console.ReadLine());
 
-int[,] myArray = CreateRandom2dArray(m, n, min, max);
-Show2dArray(myArray);
+// int[,] myArray = CreateRandom2dArray(m, n, min, max);
+// Show2dArray(myArray);
 //Задача 1 : Задайте двумерный массив размера m на n. Каждый элемент в массиве находится по формуле Aij = i+j. 
 //Выведите полученный элемент на экран.
 // метод будет генерировать новый массив, и возвращать на выходе тоже
@@ -59,22 +59,51 @@ Show2dArray(myArray);
 //Задача2: Задайте двумерный массив. найдите элементы, у которых оба индекса четные и замените эти элементы на их квадраты.
 // метод преобразующий, возвращать ничего не будем. на вход будем брать сам массив
 
-void PositiveMassive(int [,] array)
-{
-    for(int i = 0; i < array.GetLength(0); i++)
-        {
-            for(int j = 0; j < array.GetLength(1); j++)
-            {
-                if (i % 2 == 0 && j % 2 == 0)
-                {
-                    array[i,j] *= array[i,j];
-                }
-            }   
+// void PositiveMassive(int [,] array)
+// {
+//     for(int i = 0; i < array.GetLength(0); i++)
+//         {
+//             for(int j = 0; j < array.GetLength(1); j++)
+//             {
+//                 if (i % 2 == 0 && j % 2 == 0)
+//                 {
+//                     array[i,j] *= array[i,j];
+//                 }
+//             }   
         
-        }
-}
+//         }
+        
+// }
 
-PositiveMassive(myArray);
-Show2dArray(myArray);
+
+// PositiveMassive(myArray);
+// Show2dArray(myArray);
 //Задача3: Задать двумерный массив, найти сумму элементов,находящихся на главной диагонали c индексами (0,0),
 // (1,1) и тд (i==j)
+int SummDiagonal2dArray(int[,]array)
+{
+    int sum =0;
+    for(int i = 0; i < array.GetLength(0); i++)
+    {
+        for(int j = 0; j < array.GetLength(1); j++)
+        {
+            if(i == j)
+            {
+                sum = array[i,j]+sum;
+            }
+        }
+    }
+    return sum;
+}
+Console.Write("Input a number of rows: ");
+int m = Convert.ToInt32(Console.ReadLine());
+Console.Write("Input a number of columns: ");
+int n = Convert.ToInt32(Console.ReadLine());
+Console.Write("Input a minValue: ");
+int min = Convert.ToInt32(Console.ReadLine());
+Console.Write("Input a number of maxValue: ");
+int max = Convert.ToInt32(Console.ReadLine());
+
+int[,] myArray = CreateRandom2dArray(m, n, min, max);
+Show2dArray(myArray);
+Console.WriteLine(SummDiagonal2dArray(myArray));
