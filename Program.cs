@@ -1,26 +1,26 @@
 ﻿// Семинар 7 двумерные массивы 
 // Задайте двумерный массив размером m x n, заполненный случайными целыми числами
-int[,] CreateRandom2dArray(int rows, int columns, int minValue, int maxValue)
-{
-    int[,] array = new int[rows, columns];// выделяем память под массив
+// int[,] CreateRandom2dArray(int rows, int columns, int minValue, int maxValue)
+// {
+//     int[,] array = new int[rows, columns];// выделяем память под массив
 
-    for (int i=0; i< rows; i++) //сперва  проходимся по строкам
-        for (int j =0; j < columns; j++) // теперь по столбцам
-            array[i,j] = new Random().Next(minValue, maxValue + 1); // создаем массив
+//     for (int i=0; i< rows; i++) //сперва  проходимся по строкам
+//         for (int j =0; j < columns; j++) // теперь по столбцам
+//             array[i,j] = new Random().Next(minValue, maxValue + 1); // создаем массив
         
-    return array;   
-}
-void Show2dArray(int[,] array) //вызов двумерного массива
-{
-    for(int i = 0; i < array.GetLength(0); i++) //GetLength - параметр конкретного габарита
-    {
-        for(int j = 0; j < array.GetLength(1); j++)
-            Console.Write(array[i, j] + " ");
+//     return array;   
+// }
+// void Show2dArray(int[,] array) //вызов двумерного массива
+// {
+//     for(int i = 0; i < array.GetLength(0); i++) //GetLength - параметр конкретного габарита
+//     {
+//         for(int j = 0; j < array.GetLength(1); j++)
+//             Console.Write(array[i, j] + " ");
 
-        Console.WriteLine(); // чтобы было красивое отображение массива
-    }
-    Console.WriteLine(); // что бы 2 массива не сливались
-}
+//         Console.WriteLine(); // чтобы было красивое отображение массива
+//     }
+//     Console.WriteLine(); // что бы 2 массива не сливались
+// }
 
 // Console.Write("Input a number of rows: ");
 // int m = Convert.ToInt32(Console.ReadLine());
@@ -80,22 +80,66 @@ void Show2dArray(int[,] array) //вызов двумерного массива
 // Show2dArray(myArray);
 //Задача3: Задать двумерный массив, найти сумму элементов,находящихся на главной диагонали c индексами (0,0),
 // (1,1) и тд (i==j)
-int SummDiagonal2dArray(int[,]array)
+// int SummDiagonal2dArray(int[,]array)
+// {
+//     int sum =0;
+//     for(int i = 0; i < array.GetLength(0); i++)
+//     // for(int i =0; i < array.Getlength(0) && i < array.Getlength(1); i++ ) -более быстрое и легкое решение
+//     //      sum = array[i, i]; 
+//     {
+//         for(int j = 0; j < array.GetLength(1); j++)
+//         {
+//             if(i == j)
+//             {
+//                 sum = array[i,j]+sum;
+//             }
+//         }
+//     }
+//     return sum;
+// }
+// Console.Write("Input a number of rows: ");
+// int m = Convert.ToInt32(Console.ReadLine());
+// Console.Write("Input a number of columns: ");
+// int n = Convert.ToInt32(Console.ReadLine());
+// Console.Write("Input a minValue: ");
+// int min = Convert.ToInt32(Console.ReadLine());
+// Console.Write("Input a number of maxValue: ");
+// int max = Convert.ToInt32(Console.ReadLine());
+
+// int[,] myArray = CreateRandom2dArray(m, n, min, max);
+// Show2dArray(myArray);
+// Console.WriteLine(SummDiagonal2dArray(myArray));
+
+//Homework 7
+// Задача 47. Задайте двумерный массив размером m×n, заполненный случайными вещественными числами.
+
+// m = 3, n = 4.
+
+// 0,5 7 -2 -0,2
+
+// 1 -3,3 8 -9,9
+
+// 8 7,8 -7,1 9
+double[,] CreateRandomdouble2dArray(int rows, int columns, int minValue, int maxValue)
 {
-    int sum =0;
-    for(int i = 0; i < array.GetLength(0); i++)
-    // for(int i =0; i < array.Getlength(0) && i < array.Getlength(1); i++ ) -более быстрое и легкое решение
-    //      sum = array[i, i]; 
+    double[,] array = new double[rows, columns];// выделяем память под массив
+
+    for (int i=0; i< rows; i++) //сперва  проходимся по строкам
+        for (int j =0; j < columns; j++) // теперь по столбцам
+            array[i,j] = new Random().Next(minValue, maxValue + 1) + new Random().NextDouble(); // создаем массив
+        
+    return array;   
+}
+void Show2dArray(double[,] array) //вызов двумерного массива
+{
+    for(int i = 0; i < array.GetLength(0); i++) //GetLength - параметр конкретного габарита
     {
         for(int j = 0; j < array.GetLength(1); j++)
-        {
-            if(i == j)
-            {
-                sum = array[i,j]+sum;
-            }
-        }
+            Console.Write(array[i, j] + " ");
+
+        Console.WriteLine(); // чтобы было красивое отображение массива
     }
-    return sum;
+    Console.WriteLine(); // что бы 2 массива не сливались
 }
 Console.Write("Input a number of rows: ");
 int m = Convert.ToInt32(Console.ReadLine());
@@ -106,6 +150,25 @@ int min = Convert.ToInt32(Console.ReadLine());
 Console.Write("Input a number of maxValue: ");
 int max = Convert.ToInt32(Console.ReadLine());
 
-int[,] myArray = CreateRandom2dArray(m, n, min, max);
+double[,] myArray = CreateRandomdouble2dArray(m, n, min, max);
 Show2dArray(myArray);
-Console.WriteLine(SummDiagonal2dArray(myArray));
+
+// Задача 50. Напишите программу, которая на вход принимает позиции элемента в двумерном массиве, и возвращает значение этого элемента или же указание, что такого элемента нет.
+
+// Например, задан массив:
+
+// 1 4 7 2
+
+// 5 9 2 3
+
+// 8 4 2 4
+
+// 1 7 -> числа с такими индексами в массиве нет
+
+// Задача 52. Задайте двумерный массив из целых чисел. Найдите среднее арифметическое элементов в каждом столбце.
+
+// Например, задан массив:
+// 1 4 7 2
+// 5 9 2 3
+// 8 4 2 4
+// Среднее арифметическое каждого столбца: 4,6; 5,6; 3,6; 3.
