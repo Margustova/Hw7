@@ -166,53 +166,13 @@ void Show2dArray(int[,] array) //вызов двумерного массива
 
 // 1 7 -> числа с такими индексами в массиве нет
 
-void Double2dArray(int[,]array, int i1, int j1) //запрашиваем массив и индексы у пользователя
-{
-    if (i1 <=array.GetLength(0) && j1<=array.GetLength(1))
-    {
-        Console.WriteLine($"Result is {array[i1,j1]} ");
-    }
-    else Console.WriteLine($"This is mistake");               
-}
-Console.Write("Input a number of rows: ");
-int m = Convert.ToInt32(Console.ReadLine());
-Console.Write("Input a number of columns: ");
-int n = Convert.ToInt32(Console.ReadLine());
-Console.Write("Input a minValue: ");
-int min = Convert.ToInt32(Console.ReadLine());
-Console.Write("Input a number of maxValue: ");
-int max = Convert.ToInt32(Console.ReadLine());
-
-int[,] myArray = CreateRandom2dArray(m, n, min, max);
-Show2dArray(myArray);
-Console.Write("Input a first index: ");
-int firstIndex = Convert.ToInt32(Console.ReadLine());
-Console.Write("Input a second index: ");
-int secondIndex = Convert.ToInt32(Console.ReadLine());
-Double2dArray(myArray, firstIndex, secondIndex);
-
-// Задача 52. Задайте двумерный массив из целых чисел. Найдите среднее арифметическое элементов в каждом столбце.
-
-// Например, задан массив:
-// 1 4 7 2
-// 5 9 2 3
-// 8 4 2 4
-// // Среднее арифметическое каждого столбца: 4,6; 5,6; 3,6; 3.
-// double AverageSumColumns(int columns, int rows)
-// {    
-//     int aversum = 0;
-//     int[] array = new int[columns];
-
-//     for(int j =0; j < columns; j++)
+// void Double2dArray(int[,]array, int i1, int j1) //запрашиваем массив и индексы у пользователя
+// {
+//     if (i1 <=array.GetLength(0) && j1<=array.GetLength(1))
 //     {
-//         aversum += array[j] / columns;
-//         for(int i = 0; i < rows; i++)
-//         {
-//             while (i < rows)
-//         }
-      
+//         Console.WriteLine($"Result is {array[i1,j1]} ");
 //     }
-//     return aversum;
+//     else Console.WriteLine($"This is mistake");               
 // }
 // Console.Write("Input a number of rows: ");
 // int m = Convert.ToInt32(Console.ReadLine());
@@ -225,4 +185,45 @@ Double2dArray(myArray, firstIndex, secondIndex);
 
 // int[,] myArray = CreateRandom2dArray(m, n, min, max);
 // Show2dArray(myArray);
-// Console.WriteLine(AverageSumColumns(n));
+// Console.Write("Input a first index: ");
+// int firstIndex = Convert.ToInt32(Console.ReadLine());
+// Console.Write("Input a second index: ");
+// int secondIndex = Convert.ToInt32(Console.ReadLine());
+// Double2dArray(myArray, firstIndex, secondIndex);
+
+// Задача 52. Задайте двумерный массив из целых чисел. Найдите среднее арифметическое элементов в каждом столбце.
+
+// Например, задан массив:
+// 1 4 7 2
+// 5 9 2 3
+// 8 4 2 4
+// // Среднее арифметическое каждого столбца: 4,6; 5,6; 3,6; 3.
+void AverageSumColumns(int [,]array)
+{    
+    double aversum;
+    for(int j =0; j < array.GetLength(1); j++)
+    {
+        aversum= 0;
+        for(int i =0; i < array.GetLength(0); i++)
+        
+        {
+                aversum += array[i,j];
+                
+        }
+        aversum = aversum/array.GetLength(0);
+        aversum = Math.Round(aversum, 2);
+    Console.Write($" {aversum}; "); 
+    }   
+}
+Console.Write("Input a number of rows: ");
+int m = Convert.ToInt32(Console.ReadLine());
+Console.Write("Input a number of columns: ");
+int n = Convert.ToInt32(Console.ReadLine());
+Console.Write("Input a minValue: ");
+int min = Convert.ToInt32(Console.ReadLine());
+Console.Write("Input a number of maxValue: ");
+int max = Convert.ToInt32(Console.ReadLine());
+
+int[,] myArray = CreateRandom2dArray(m, n, min, max);
+Show2dArray(myArray);
+AverageSumColumns(myArray);
